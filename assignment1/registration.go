@@ -1,4 +1,4 @@
-package assignment1
+package registration
 
 // import "github.com/aminaamangeldi15/go/assignment1/database"
 // import "Go/assignment1"
@@ -19,7 +19,7 @@ type Registration struct {
 // 	logins []Registration
 // }
 
-func (r *Registration) register(d *Database) {
+func (r *Registration) regis(d Database) {
 	reg := Registration{r.first_name, r.last_name, r.age, r.login, r.password}
 	d.logins = append(d.logins, reg)
 }

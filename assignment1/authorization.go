@@ -1,4 +1,4 @@
-package assignment1
+package authorization
 
 // import "github.com/aminaamangeldi15/go/assignment1/database"
 // import "Go/assignment1"2
