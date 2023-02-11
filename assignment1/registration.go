@@ -1,7 +1,11 @@
 package assignment1
 
 // import "github.com/aminaamangeldi15/go/assignment1/database"
-import "Go/assignment1"
+// import "Go/assignment1"
+// import "C:\Users\amina\KBTU\Go\assignment1\database.go"
+// import (
+// 	"./assignment1"
+// )
 
 type Registration struct {
 	first_name string

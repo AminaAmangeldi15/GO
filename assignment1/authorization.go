@@ -1,10 +1,10 @@
 package assignment1
 
 // import "github.com/aminaamangeldi15/go/assignment1/database"
-import "Go/assignment1"
+// import "Go/assignment1"2
 
 type Authorization struct {
-	login string
+	login    string
 	password string
 }
 
