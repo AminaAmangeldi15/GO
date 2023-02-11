@@ -2,20 +2,18 @@ package main
 
 // import "fmt"
 import (
+	"fmt"
+
 	a "./assignment1"
 )
 
 func main(){
 	d := a.Database{}
-	// first_name := "Amina"
-	// last_name := "Amangeldi"
-	// age := 18
-	// l := "amina"
-	// p := "pass"
-	// reg  := &a.Registration{"Amina", "Amangeldi", 18, "login", "pass"}
-	// reg.regis(d)
-	// r := &a.Registration{first_name: "Amina", last_name: "Amangeldi", age: 18, login: "l", password: "p"}
-	r := &a.Registration{}
-	
-
+	r := &a.Registration{Name: "Amina", Surname: "Amangeldi", Age: 18, Login: "l", Password: "p"}
+	r1 := &a.Registration{Name: "Jin", Password: "Kim", Age: 24, Login: "l1", Password: "p1"}
+	r.Register(d)
+	r1.Register(d)
+	au := &a.Authorization{Login: "l", Password: "p"}
+	response := au.SignIn(d)
+	fmt.Println(response)
 }

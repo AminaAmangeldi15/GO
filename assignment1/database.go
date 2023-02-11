@@ -1,4 +1,4 @@
-package database
+package assignment1
 
 // import "github.com/aminaamangeldi15/go/assignment1"
 // import (
