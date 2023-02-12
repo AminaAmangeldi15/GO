@@ -20,5 +20,5 @@ func (d *Database) Register(r *Registration) error {
 	}
 	reg := Registration{r.Name, r.Surname, r.Age, r.Login, r.Password}
 	d.Logins = append(d.Logins, reg)
-	return nil
+	return fmt.Errorf("you registred!")
 }
