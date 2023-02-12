@@ -7,7 +7,7 @@ package assignment1
 // import "C:\Users\amina\KBTU\Go\assignment1\registration.go"
 
 type Database struct {
-	logins []Registration
+	Logins []Registration
 }
 
 // func (d *Database) register(r *Registration) {

@@ -9,8 +9,8 @@ type Authorization struct {
 }
 
 func (a *Authorization) SignIn(d *Database) string {
-	for i := 0; i < len(d.logins); i++{
-		if d.logins[i].Login == a.Login && d.logins[i].Password == a.Password{
+	for i := 0; i < len(d.Logins); i++{
+		if d.Logins[i].Login == a.Login && d.Logins[i].Password == a.Password{
 			return "You entered system!"
 		} 
 	}
