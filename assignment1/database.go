@@ -11,7 +11,7 @@ type Database struct {
 	Logins []Registration
 }
 
-func (d *Database) register(r *Registration) error {
+func (d *Database) Register(r *Registration) error {
 	for i := 0; i < len(d.Logins); i++{
 		if d.Logins[i].Login == r.Login && d.Logins[i].Password == r.Password{
 			return fmt.Errorf("username %s %s already exists", r.Name, r.Surname) 
