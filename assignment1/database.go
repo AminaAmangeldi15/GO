@@ -1,5 +1,6 @@
 package assignment1
 
+import "fmt"
 // import "github.com/aminaamangeldi15/go/assignment1"
 // import (
 // 	"./assignment1"
@@ -10,7 +11,14 @@ type Database struct {
 	Logins []Registration
 }
 
-// func (d *Database) register(r *Registration) {
-// 	reg := Registration{r.first_name, r.last_name, r.age, r.login, r.password}
-// 	d.logins = append(d.logins, reg)
-// }
+func (d *Database) register(r *Registration) error {
+	for i := 0; i < len(d.Logins); i++{
+		if d.Logins[i].Login == r.Login && d.Logins[i].Password == r.Password{
+			return fmt.Errorf("username %s %s already exists", r.Name, r.Surname) 
+		} 
+	}
+	reg := Registration{r.Name, r.Surname, r.Age, r.Login, r.Password}
+	d.Logins = append(d.Logins, reg)
+	return nil
+}
+
