@@ -14,7 +14,7 @@ func main() {
 	// r1 := assignment1.Registration{Name: "Jin", Password: "Kim", Age: 24, Login: "l1", Password: "p1"}
 	// r.Register(d)
 	r.Register(d)
-	// response1 := r.Register(d)
+	
 	// fmt.Println(response1)
 	fmt.Println(d)
 	// r1.Register(d)
