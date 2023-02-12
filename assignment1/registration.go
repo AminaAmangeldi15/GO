@@ -12,7 +12,7 @@ type Registration struct {
 // 	logins []Registration
 // }
 
-func (r *Registration) Register(d Database) {
+func (r *Registration) Register(d *Database) {
 	reg := Registration{r.Name, r.Surname, r.Age, r.Login, r.Password}
 	d.logins = append(d.logins, reg)
 }

@@ -8,7 +8,7 @@ type Authorization struct {
 	Password string
 }
 
-func (a *Authorization) SignIn(d Database) string {
+func (a *Authorization) SignIn(d *Database) string {
 	for i := 0; i < len(d.logins); i++{
 		if d.logins[i].Login == a.Login && d.logins[i].Password == a.Password{
 			return "You entered system!"
