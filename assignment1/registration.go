@@ -23,4 +23,7 @@ type Registration struct {
 // 	reg := Registration{r.Name, r.Surname, r.Age, r.Login, r.Password}
 // 	d.Logins = append(d.Logins, reg)
 // 	return nil
+
+
+
 // }
