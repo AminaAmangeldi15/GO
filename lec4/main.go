@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	a "github.com/AminaAmangeldi15/Go/lec4/hm"
+	a "github.com/AminaAmangeldi15/Go/lec4/hw"
 )
 
 func main() {
