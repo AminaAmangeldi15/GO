@@ -1,4 +1,4 @@
-package hm
+package hw
 
 type List interface {
 	Add(element int)
