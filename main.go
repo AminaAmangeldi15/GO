@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/AminaAmangeldi15/Go/hm"
+	a "github.com/AminaAmangeldi15/Go/hm"
 )
 
 func main() {
-	a := ArrayList{}
+	a := a.ArrayList{}
 	a.Add(5)
 	a.Add(6)
 	a.Size()
