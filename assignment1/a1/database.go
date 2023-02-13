@@ -3,7 +3,6 @@ package assignment1
 import (
 	"fmt"
 	"strings"
-	
 )
 
 type Database struct {
