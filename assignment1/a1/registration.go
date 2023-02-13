@@ -1,4 +1,4 @@
-package a1
+package assignment1
 
 // import "fmt"
 

@@ -1,7 +1,4 @@
-package a1
-
-// import "github.com/aminaamangeldi15/go/assignment1/database"
-// import "Go/assignment1"2
+package assignment1
 
 type Authorization struct {
 	Login    string
