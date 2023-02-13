@@ -12,7 +12,7 @@ type Authorization struct {
 // 	for i := 0; i < len(d.Logins); i++{
 // 		if d.Logins[i].Login == a.Login && d.Logins[i].Password == a.Password{
 // 			return "You entered system!"
-// 		} 
+// 		}
 // 	}
 // 	return "No authorized!!!"
 // }

@@ -3,21 +3,12 @@ package a1
 import (
 	"fmt"
 	"strings"
+	
 )
-
-// import "github.com/aminaamangeldi15/go/assignment1"
-// import (
-// 	"./assignment1"
-// )
-// import "C:\Users\amina\KBTU\Go\assignment1\registration.go"
-
-// type Database struct {
-// 	Logins []Registration
-// }
 
 type Database struct {
 	Logins []Registration
-	Items []Item
+	Items  []Item
 }
 
 func (d *Database) Register(r Registration) *Registration {
@@ -34,15 +25,15 @@ func (d *Database) Register(r Registration) *Registration {
 	return reg
 }
 
-func (d *Database) AddItem(i Item) *Item{
-	item := &Item{i.Name, i.Price, i.Rating}
-	d.Items = append(d.Items, Item{i.Name, i.Price, i.Rating})
+func (d *Database) AddItem(name string, price float64) *Item {
+	item := &Item{name, price, 0, nil}
+	d.Items = append(d.Items, Item{name, price, 0, nil})
 	return item
 }
 
-func (d *Database) SearchItem(name string){
-	for i := 0; i < len(d.Items); i++{
-		if strings.Contains(strings.ToUpper(d.Items[i].Name), strings.ToUpper(name)){
+func (d *Database) SearchItem(name string) {
+	for i := 0; i < len(d.Items); i++ {
+		if strings.Contains(strings.ToUpper(d.Items[i].Name), strings.ToUpper(name)) {
 			fmt.Println(d.Items[i])
 			return
 		} else {
@@ -51,9 +42,9 @@ func (d *Database) SearchItem(name string){
 	}
 }
 
-func (d *Database) FilteringItems(price1, price2, rating1, rating2 float64){
-	for i := 0; i < len(d.Items); i++{
-		if d.Items[i].Price >= price1 && d.Items[i].Price <= price2 && d.Items[i].Rating >= rating1 && d.Items[i].Rating <= rating2{
+func (d *Database) FilteringItems(price1, price2, rating1, rating2 float64) {
+	for i := 0; i < len(d.Items); i++ {
+		if d.Items[i].Price >= price1 && d.Items[i].Price <= price2 && d.Items[i].Rating >= rating1 && d.Items[i].Rating <= rating2 {
 			fmt.Println("We found item that you searched!")
 			fmt.Println(d.Items[i])
 			return
@@ -62,6 +53,7 @@ func (d *Database) FilteringItems(price1, price2, rating1, rating2 float64){
 		}
 	}
 }
+
 // func (d *Database) Register(r Registration) *Registration {
 // 	for i := 0; i < len(d.Logins); i++ {
 // 		if d.Logins[i].Login == r.Login && d.Logins[i].Password == r.Password {
@@ -75,14 +67,19 @@ func (d *Database) FilteringItems(price1, price2, rating1, rating2 float64){
 // 	return reg
 // }
 
-
-func Rate(d Database, a Authorization, itemName string, rating float64){
-	if(a.SignIn(d) == "You entered system!"){
+func Rate(d Database, a Authorization, itemName string, rating float64) {
+	if a.SignIn(d) == "You entered system!" {
 		fmt.Println("You entered system!")
-		for i := 0; i < len(d.Items); i++{
-			if d.Items[i].Name == itemName{
-				d.Items[i].Rating = rating
+		var sum float64
+		for i := 0; i < len(d.Items); i++ {
+			if d.Items[i].Name == itemName {
+				d.Items[i].RatingList = append(d.Items[i].RatingList, rating)
 				fmt.Println("You successfully rated an item!")
+				for j := 0; j < len(d.Items[i].RatingList); j++ {
+					sum += d.Items[i].RatingList[j]
+				}
+				d.Items[i].Rating = sum / float64(len(d.Items[i].RatingList))
+				// fmt.Println(d.Items[i].Rating)
 			} else {
 				fmt.Println("No such item!!!")
 			}
