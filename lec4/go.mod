@@ -1,3 +1,3 @@
-module github.com/AminaAmangeldi15/Go/hm/lec4
+module github.com/AminaAmangeldi15/Go/lec4
 
 go 1.19
