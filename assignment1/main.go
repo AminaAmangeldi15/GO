@@ -4,7 +4,7 @@ package main
 import (
 	"fmt"
 
-	a "github.com/AminaAmangeldi15/Go/assignment1"
+	a "github.com/AminaAmangeldi15/Go/assignment1/a1"
 )
 
 func main() {

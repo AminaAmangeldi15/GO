@@ -1,4 +1,4 @@
-package assignment1
+package a1
 
 type Item struct {
 	Name       string
