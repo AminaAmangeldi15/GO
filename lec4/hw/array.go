@@ -38,7 +38,7 @@ func (a *ArrayList) Size() {
 	fmt.Println("Size of array " + size)
 }
 
-func(a *ArrayList) IsEmty() bool{ 
+func(a *ArrayList) IsEmpty() bool{ 
     if len(a.element) == 0{ 
         fmt.Println("It is empty!") 
         return true; 
@@ -50,7 +50,7 @@ func(a *ArrayList) IsEmty() bool{
 func(a *ArrayList) Contains(element1 int) bool{ 
     for _,v := range a.element{ 
         if v == element1{ 
-            fmt.Println("Yes it is found!") 
+            fmt.Println("Array contains this element") 
             return true 
         } 
     } 

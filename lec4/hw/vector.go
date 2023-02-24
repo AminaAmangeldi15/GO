@@ -38,7 +38,7 @@ func (v *Vector) Size() {
 	fmt.Println("Size of vector " + size)
 }
 
-func(v *Vector) IsEmty() bool{ 
+func(v *Vector) IsEmpty() bool{ 
     if len(v.element) == 0{ 
         fmt.Println("It is empty!") 
         return true; 
@@ -50,14 +50,14 @@ func(v *Vector) IsEmty() bool{
 func(v *Vector) Contains(element int) bool{ 
     for _,v := range v.element{ 
         if v == element{ 
-            fmt.Println("Yes it is found!") 
+            fmt.Println("Vector contains this element") 
             return true 
         } 
     } 
     return false 
 } 
 
-func (v *Vector) pop_back() (int) { 
+func (v *Vector) Pop_back() (int) { 
     if len(v.element) == 0 { 
         return 0 
     } 
@@ -67,7 +67,7 @@ func (v *Vector) pop_back() (int) {
     return lastVal 
 } 
  
-func (v *Vector) pop_front() (int) { 
+func (v *Vector) Pop_front() (int) { 
     if len(v.element) == 0 { 
         return 0 
     } 
@@ -75,3 +75,19 @@ func (v *Vector) pop_front() (int) {
     v.element = v.element[1:] 
     return firstVal 
 } 
+
+func (v *Vector) Front() int {
+    if len(v.element) == 0 { 
+        return 0 
+    } 
+    front := v.element[0]
+    return front 
+}
+
+func (v *Vector) Back() int {
+    if len(v.element) == 0 { 
+        return 0 
+    } 
+    back := v.element[len(v.element) - 1]
+    return back
+}

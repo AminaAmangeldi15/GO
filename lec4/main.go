@@ -16,5 +16,13 @@ func main() {
 	fmt.Println(a)
 	v := ar.Vector{}
 	v.Add(3)
+	v.Add(4)
+	// v.Pop_back()
+	v.Pop_back()
 	v.Size()
+	// v.Contains(3)
+	// v.Size()
+	// fmt.Println(v.Front())
+	// fmt.Println(v.Back())
+	// fmt.Println(v.IsEmty())
 }
