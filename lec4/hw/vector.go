@@ -37,3 +37,41 @@ func (v *Vector) Size() {
 	size := strconv.Itoa(len(v.element))
 	fmt.Println("Size of vector " + size)
 }
+
+func(v *Vector) IsEmty() bool{ 
+    if len(v.element) == 0{ 
+        fmt.Println("It is empty!") 
+        return true; 
+    } 
+    fmt.Println("It is not empty!") 
+    return false; 
+} 
+
+func(v *Vector) Contains(element int) bool{ 
+    for _,v := range v.element{ 
+        if v == element{ 
+            fmt.Println("Yes it is found!") 
+            return true 
+        } 
+    } 
+    return false 
+} 
+
+func (v *Vector) pop_back() (int) { 
+    if len(v.element) == 0 { 
+        return 0 
+    } 
+    lastId := len(v.element) - 1 
+    lastVal := v.element[lastId] 
+    v.element = v.element[:lastId] 
+    return lastVal 
+} 
+ 
+func (v *Vector) pop_front() (int) { 
+    if len(v.element) == 0 { 
+        return 0 
+    } 
+    firstVal := v.element[0] 
+    v.element = v.element[1:] 
+    return firstVal 
+} 

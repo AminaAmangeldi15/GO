@@ -37,3 +37,22 @@ func (a *ArrayList) Size() {
 	size := strconv.Itoa(len(a.element))
 	fmt.Println("Size of array " + size)
 }
+
+func(a *ArrayList) IsEmty() bool{ 
+    if len(a.element) == 0{ 
+        fmt.Println("It is empty!") 
+        return true; 
+    } 
+    fmt.Println("It is not empty!") 
+    return false; 
+} 
+
+func(a *ArrayList) Contains(element1 int) bool{ 
+    for _,v := range a.element{ 
+        if v == element1{ 
+            fmt.Println("Yes it is found!") 
+            return true 
+        } 
+    } 
+    return false 
+} 
