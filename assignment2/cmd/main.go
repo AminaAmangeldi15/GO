@@ -4,9 +4,6 @@ import (
 	f "github.com/AminaAmangeldi15/Go/assignment2/pkg"
 )
 
-
-
-
 func main(){
 	// result, err := db.Exec("insert into users (name, surname, login, password) values ('Amina', 'Amangeldi', 'login', 'passwprd')")
 	// if err != nil{
