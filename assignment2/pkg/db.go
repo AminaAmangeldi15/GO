@@ -2,7 +2,7 @@ package pkg
 
 import (
 	"database/sql"	
-	// _ "github.com/lib/pq"
+	_ "github.com/lib/pq"
 )
 
 func Db() *sql.DB{
@@ -11,6 +11,6 @@ func Db() *sql.DB{
     if err != nil {
         panic(err)
     } 
-    defer DB.Close()
+    // defer DB.Close()
 	return DB
 }

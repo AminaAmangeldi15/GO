@@ -6,7 +6,7 @@ import (
 	// "github.com/AminaAmangeldi15/Go/assignment2/pkg"
 	m "github.com/AminaAmangeldi15/Go/assignment2/models"
 	"database/sql"	
-	// _ "github.com/lib/pq"
+	_ "github.com/lib/pq"
 )
 
 var db *sql.DB = Db()
