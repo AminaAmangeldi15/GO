@@ -3,11 +3,13 @@ package pkg
 import (
 	"fmt"
 	"strconv"
-	"github.com/AminaAmangeldi15/Go/assignment2"
+	"github.com/AminaAmangeldi15/Go/assignment2/pkg"
 	m "github.com/AminaAmangeldi15/Go/assignment2/models"
+	"database/sql"	
+	// _ "github.com/lib/pq"
 )
 
-db = Db()
+var db *sql.DB = pkg.Db()
 
 func Register(u m.User){
 

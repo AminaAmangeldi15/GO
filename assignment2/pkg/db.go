@@ -2,8 +2,7 @@ package pkg
 
 import (
 	"database/sql"	
-	_ "github.com/lib/pq"
-	"github.com/AminaAmangeldi15/Go/assignment2"
+	// _ "github.com/lib/pq"
 )
 
 func Db() *sql.DB{

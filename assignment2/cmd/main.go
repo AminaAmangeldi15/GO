@@ -1,9 +1,7 @@
 package main
 
 import (
-	"database/sql"	
 	f "github.com/AminaAmangeldi15/Go/assignment2/pkg"
-	_ "github.com/lib/pq"
 )
 
 
