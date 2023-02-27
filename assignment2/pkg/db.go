@@ -2,7 +2,7 @@ package pkg
 
 import (
 	"database/sql"	
-	_ "github.com/lib/pq"
+	// _ "github.com/lib/pq"
 )
 
 func Db() *sql.DB{

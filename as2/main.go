@@ -2,13 +2,15 @@ package main
 
 import (
 	"database/sql"
-	"encoding/json"
+	// "encoding/json"
 	"fmt"
-	"log"
+	// "strconv"
+
+	// "log"
 	"net/http"
 
-	// _ "github.com/lib/pq"
-	a "github.com/AminaAmangeldi15/Go/as2"
+	_ "github.com/lib/pq"
+	// a "github.com/AminaAmangeldi15/Go/as"
 	// "github.com/gorilla/mux"
 	// "github.com/AminaAmangeldi15/Go/assignment2/pkg"
 	// "github.com/AminaAmangeldi15/Go/assignment2/models"
@@ -33,9 +35,9 @@ type Authorization struct {
 }
 
 type Item struct {
-	Name   string
-	Price  float64
-	Rating float64
+	Name   string  `json:"item_name"`
+	Price  float64 `json:"item_price"`
+	Rating float64 `json:"item_rating"`
 }
 
 type Rating struct {
@@ -51,6 +53,81 @@ func Db() *sql.DB {
 	return DB
 }
 
+// func homePage(w http.ResponseWriter, r *http.Request) {
+// 	fmt.Fprintf(w, "This is homepage!")
+// 	fmt.Println("Endpoint hit: homePage")
+// }
+
+func Register(w http.ResponseWriter, r *http.Request) {
+	db := Db()
+	// var Name, Username, Password string
+	if r.Method == http.MethodGet {
+	//   temp, _ := template.ParseFiles("views/register.html")
+	//   temp.Execute(w, nil)
+	}else if r.Method == http.MethodPost {
+	  // fmt.Println("lpad")
+	  Name := r.Form.Get("user_name")
+	  Surname := r.Form.Get("user_surname")
+	  Username := r.Form.Get("user_login")
+	  Password := r.Form.Get("user_password")
+  
+	  fmt.Println(Name)
+	  rows, err := db.Query("insert into users (name, surname, login, password) values (?,?,?,?)", Name, Surname,  Username, Password)
+	  if err != nil {
+		panic(err)
+		// fmt.Println("You have entered an incorrect login or password, please try again!")
+	  }else {
+		fmt.Println("Okayy!")
+	}
+	rows.Close()
+  
+	}
+}
+// func createPost(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+// 	var post User
+// 	_ = json.NewDecoder(r.Body).Decode(&post)
+// 	post.Name = strconv.Itoa(rand.Intn(1000000))
+// 	posts = append(posts, post)
+// 	json.NewEncoder(w).Encode(&post)
+// }
+
+// func SearchItemByName(w http.ResponseWriter, r *http.Request){
+// 	params := mux.Vars(r)
+// 	rows, err := Db().Query("select * from items")
+//     if err != nil {
+//         panic(err)
+//     }
+
+//     items := []Item{}
+
+//     for rows.Next(){
+//         i := Item{}
+//         err := rows.Scan(&i.Name, &i.Price, &i.Rating)
+//         if err != nil{
+//             fmt.Println(err)
+//             continue
+//         }
+//         items  = append(items , i)
+//     }
+
+// 	w.Header().Set("Content-Type", "application/json")
+//   	for _, item := range items {
+// 		s := fmt.Sprintf("%f", item.Price) 
+// 		if s == params["item_price"] {
+// 			json.NewEncoder(w).Encode(item)
+// 			return
+// 		}
+//     }
+//   json.NewEncoder(w).Encode(&Item{})
+// }
+// 	json.NewEncoder(w).Encode(items)
+// 	fmt.Println("Endpoint hit: getAll")
+// fmt.Println("Searching item is:")
+// for _, i := range items {
+//     fmt.Println(i.Name, i.Price, i.Rating)
+// }
+// }
 // func Register(u User){
 
 //		result, err := db.Exec("insert into users (name, surname, login, password) values ($1, $2, $3, $4)", u.Name, u.Surname, u.Login, u.Password)
@@ -61,6 +138,7 @@ func Db() *sql.DB {
 //	    fmt.Println("You registered a new user")
 //		result.LastInsertId()
 //	}
+
 func printMessage(message string) {
 	fmt.Println("")
 	fmt.Println(message)
@@ -73,40 +151,54 @@ func checkErr(err error) {
 	}
 }
 
-func Register(w http.ResponseWriter, r *http.Request) {
-	Name := r.FormValue("user_name")
-	Surname := r.FormValue("user_surname")
-	Login := r.FormValue("user_login")
-	Password := r.FormValue("user_password")
+// func Register(w http.ResponseWriter, r *http.Request) {
+// 	name := r.FormValue("user_name")
+// 	surname := r.FormValue("user_surname")
+// 	login := r.FormValue("user_login")
+// 	password := r.FormValue("user_password")
 
-	var response = JsonResponse{}
+// 	var response = JsonResponse{}
 
-	if Name == "" || Surname == "" || Login == "" || Password == "" {
-		response = JsonResponse{Type: "error", Message: "You are missing name or surname or login or password parameter."}
-	} else {
-		db := Db()
+// 	if name == "" || surname == "" || login == "" || password == "" {
+// 		response = JsonResponse{Type: "error", Message: "You are missing name or surname or login or password parameter."}
+// 	} else {
+// 		db := Db()
 
-		printMessage("Inserting user into DB")
+// 		fmt.Println("Inserting new user with name and surname: " + name + " " + surname + " and login: " + login)
+// 		newRegister := User{Name: name, Surname: surname, Login: login, Password: password}
+// 		result, err := db.Exec("insert into users (name, surname, login, password) values ($1, $2, $3, $4)", newRegister.Name, newRegister.Surname, newRegister.Login, newRegister.Password)
+// 		if err != nil {
+// 			panic(err)
+// 		}
+// 		result.LastInsertId()
+// 		response = JsonResponse{Type: "success", Message: "The user has been inserted successfully!"}
+// 	}
+// 	json.NewEncoder(w).Encode(response)
 
-		fmt.Println("Inserting new user with name: " + Name + " and surname: " + Surname)
-
-		var lastInsertID string
-		err := db.QueryRow("insert into users (name, surname, login, password) values ($1, $2, $3, $4) returning *", Name, Surname, Login, Password).Scan(&lastInsertID)
-
-		// check errors
-		checkErr(err)
-
-		response = JsonResponse{Type: "success", Message: "The user has been inserted successfully!"}
-	}
-
-	json.NewEncoder(w).Encode(response)
-}
+// }
 
 func main() {
-	router := mux.NewRouter()
+	// http.HandleFunc("/", homePage)
+	// http.HandleFunc("/users", Register)
 
-	router.HandleFunc("/users", Register).Methods("POST")
+	// http.HandleFunc("/users", Register)
+	// fmt.Println("Server at 8181")
+	// err := http.ListenAndServe(":8181", nil)
+	// if err != nil {
+	// 	fmt.Println(err.Error())
+	// }
+	// router := mux.NewRouter()
+	// posts = append(posts, Post{ID: "1", Title: "My first post", Body:      "This is the content of my first post"})
+	// router.HandleFunc("/posts", getPosts).Methods("GET")
+	// router.HandleFunc("/posts/{item_name}", SearchItemByName).Methods("GET")
+	// router.HandleFunc("/posts", Register).Methods("POST")
+	// http.ListenAndServe(":8000", router)
+	http.HandleFunc("/register", Register)
 
-	fmt.Println("Server at 8181")
-	log.Fatal(http.ListenAndServe(":8181", router))
+	fmt.Println("Server: http://localhost:8080")
+	http.ListenAndServe(":8080", nil)
+	// router := mux.NewRouter()
+	// router.HandleFunc("/users", Register).Methods("POST")
+	// fmt.Println("Server at 8080")
+	// log.Fatal(http.ListenAndServe(":8000", router))
 }
