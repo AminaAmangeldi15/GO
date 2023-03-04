@@ -1,8 +1,10 @@
 package main
 
 import (
+	"net/http"
+	"fmt"
+	// m "github.com/AminaAmangeldi15/Go/assignment2/models"
 	f "github.com/AminaAmangeldi15/Go/assignment2/pkg"
-	m "github.com/AminaAmangeldi15/Go/assignment2/models"
 )
 
 func main(){
@@ -13,8 +15,8 @@ func main(){
 	// u := m.User{"name", "surname", "lap", "djk"}
 	// f.Register(u)
 	// f.AddItem(m.Item{"Samsung S22", 450000, 0})
-	f.Rate(m.Rating{"Samsung S22", 5})
-	f.SearchItemByName("Samsung S22")
+	// f.Rate(m.Rating{"Samsung S22", 5})
+	// f.SearchItemByName("Samsung S22")
 	// Authorize(Authorization{"ff", "d"})
 	// AddItem(Item{"Iphone 12", 15000, 0})
 	// SearchItemByName("Iphone 12")
@@ -24,5 +26,13 @@ func main(){
 	// f.SearchItemByName("Iphone 12")
 	// FilterByPrice(10000, 200000)
 	// f.FilterByRating(2, 4)
-
+	http.HandleFunc("/register", f.Register)
+	http.HandleFunc("/authorize", f.Authorize)
+	http.HandleFunc("/additem", f.AddItem)
+	http.HandleFunc("/byname", f.SearchItemByName)
+	http.HandleFunc("/rating", f.FilterByRating)
+	http.HandleFunc("/price", f.FilterByPrice)
+	http.HandleFunc("/giverating", f.Rate)
+	fmt.Println("Server: http://localhost:8080")
+	http.ListenAndServe(":8080", nil)
 }
