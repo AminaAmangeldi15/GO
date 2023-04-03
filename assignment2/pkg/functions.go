@@ -9,7 +9,7 @@ import (
 	// "strconv"
 
 	// "github.com/AminaAmangeldi15/Go/assignment2/pkg"
-	"database/sql"
+	// "database/sql"
 
 	m "github.com/AminaAmangeldi15/Go/assignment2/models"
 	_ "github.com/lib/pq"
